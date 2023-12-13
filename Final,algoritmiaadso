@@ -1,0 +1,64 @@
+
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
+
+class Carta {
+    String nombre;
+    String poder;
+
+    public Carta(String nombre, String poder) {
+        this.nombre = nombre;
+        this.poder = poder;
+
+    }
+
+    @Override
+    public String toString() {
+        return "Carta{" +
+                "nombre='" + nombre + '\'' +
+                ", poder='" + poder + '\'' +
+                '}';
+    }
+}
+
+class JuegoCartas {
+    ArrayList<Carta> mazo;
+
+    public JuegoCartas() {
+        mazo = new ArrayList<>();
+        // Crear cartas con poderes
+        mazo.add(new Carta("Carta1", "Poder1"));
+        mazo.add(new Carta("Carta2", "Poder2"));
+        mazo.add(new Carta("Carta3", "Poder3"));
+        // Agregar más cartas según sea necesario
+
+        // Barajar las cartas
+        Collections.shuffle(mazo);
+    }
+
+    public void jugar() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("¡Bienvenido al juego de cartas!");
+
+        // Lógica del juego
+        while (mazo.size() > 0) {
+            System.out.println("Presiona Enter para sacar una carta...");
+            scanner.nextLine();
+            Carta carta = mazo.remove(0);
+            System.out.println("Has sacado la carta: " + carta);
+            System.out.println("Poder de la carta: " + carta.poder);
+            // Agregar lógica adicional según el poder de la carta
+        }
+
+        System.out.println("¡Fin del juego!");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        JuegoCartas juego = new JuegoCartas();
+        juego.jugar();
+    }
+}
